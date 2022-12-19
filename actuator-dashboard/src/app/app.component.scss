@@ -1,0 +1,63 @@
+* {
+  font-family: system-ui;
+}
+.card {
+  width: 300px;
+  margin: 20px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 15px 15px 50px grey;
+  font-size: larger;
+  padding: 20px;
+  text-align: left;
+}
+
+.info-title {
+  background-color: darkcyan;
+  color: #fff;
+  padding: 10px;
+  text-align: justify;
+  width: 400px;
+  border-radius: 10px;
+  margin: 20px;
+  float: left;;
+}
+
+.health-value {
+  color: gold;
+}
+
+.pr-chart {
+  float: left;
+}
+.req-headers {
+  color: rgb(36, 36, 36);
+  background-color: rgb(194, 194, 194);
+  padding: 8px;
+  width: 200px;
+  float: left;
+}
+.req-list {
+  float: left;
+  margin: 20px;
+  background-color: rgb(212, 252, 227);
+  border-radius: 10px;
+}
+.req-item {
+  color: rgb(85, 74, 136);
+  // width: 200px;
+  padding: 8px;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.ref-btn {
+  background: none;
+  border: #fff 1px solid;
+  border-radius: 5px;
+  color: #fff;
+  float: right;
+  margin-top: 10px;
+  cursor: pointer;
+}

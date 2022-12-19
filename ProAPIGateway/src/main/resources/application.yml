@@ -1,0 +1,49 @@
+server:
+  port: 10080
+
+#MicroService route path forwarding 
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: pro-micro-series
+        uri: lb://pro-micro-series
+        predicates:
+        - Path=/series/**
+      - id: pro-micro-prices
+        uri: lb://pro-micro-prices
+        predicates:
+        - Path=/prices/**
+      - id: node-js-micro-export
+        uri: lb://node-js-micro-export
+        predicates:
+        - Path=/export/**
+        
+#Eureka Client/Service Configuration
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka/
+      
+  instance:
+    hostname: localhost
+
+#Actuator Configuration      
+management:
+  server:
+    port: 19999
+  endpoints:
+    web:
+      exposure:
+        include: 'health, info, beans, httptrace, auditevents, custom'
+      cors:
+        allowed-origins:
+        - '*'
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+  

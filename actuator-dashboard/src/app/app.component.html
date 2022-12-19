@@ -1,0 +1,51 @@
+
+<div style="width: 100%; height: 100%; background-color: #f7f7ff; text-align: center; position: fixed;">
+  <div class="card" style="background-color: #68ff81;">
+    <div style="width: 100%;">200 Accepted</div>
+    <div style="width: 100%; font-size: 50px;">{{acceptedRequest?.length}}</div>
+  </div>
+  <div class="card" style="background-color: #fff068;">
+    <div style="width: 100%;">500 Internal Server Error</div>
+    <div style="width: 100%; font-size: 50px;">{{serverErrorRequest?.length}}</div>
+  </div>
+  <div class="card" style="background-color: #ffa135;">
+    <div style="width: 100%;">400 Bad Request</div>
+    <div style="width: 100%; font-size: 50px;">{{badRequest?.length}}</div>
+  </div>
+  <div class="card" style="background-color: #ff5353;">
+    <div style="width: 100%;">404 Not Found</div>
+    <div style="width: 100%; font-size: 50px;">{{notFoundRequest?.length}}</div>
+  </div>
+
+
+
+  <div class="info-title">
+    <span>Disk Space: <span class="health-value">{{ healthInfo?.components?.diskSpace?.details?.free | byteToMb }} / {{ healthInfo?.components?.diskSpace?.details?.total | byteToMb }}</span> </span>
+    <hr/>
+    <div *ngFor="let i of healthInfo?.components?.discoveryComposite?.components?.discoveryClient?.details?.services">
+      {{i | uppercase}}
+      </div>
+
+    <button class="ref-btn" (click)="refresh()" >Refresh</button>
+  </div>
+
+<!--   <div class="pr-chart">
+  </div> -->
+
+  <div class="req-list">
+    <span style="width: 180px;" class="req-headers">Date & Time</span>
+    <span style="width: 90px;" class="req-headers">Time Taken</span>
+    <span style="width: 70px;" class="req-headers">Method</span>
+    <span style="width: 70px;" class="req-headers">Status</span>
+    <span style="width: 450px; word-wrap: break-word;" class="req-headers">Uri</span>
+    <br/>
+    <span *ngFor="let req of allRequest | reverseArray">
+      <span style="width: 180px;" class="req-item">{{req?.timestamp | date: 'dd MMM yyyy - hh:mm:ss'}}</span>
+      <span style="width: 90px;" class="req-item">{{req?.timeTaken}} ms</span>
+      <span style="width: 70px;" class="req-item">{{req?.request?.method}}</span>
+      <span style="width: 70px;" class="req-item">{{req?.response?.status}}</span>
+      <span style="width: 450px; word-wrap: break-word; text-align: left;" class="req-item">{{req?.request?.uri}}</span>
+      <br/>
+    </span>
+  </div>
+</div>
